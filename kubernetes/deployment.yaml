@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discord-bot
+  template:
+    metadata:
+      labels:
+        app: discord-bot
+    spec:
+      containers:
+      - name: discord-bot
+        image: votre-utilisateur/votre-bot-discord:latest
+        env:
+        - name: DISCORD_TOKEN
+          value: "VOTRE_TOKEN_DISCORD"
+        - name: SPOTIPY_CLIENT_ID
+          value: "VOTRE_SPOTIFY_CLIENT_ID"
+        - name: SPOTIPY_CLIENT_SECRET
+          value: "VOTRE_SPOTIFY_CLIENT_SECRET"
